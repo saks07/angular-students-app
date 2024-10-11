@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { StudentService } from '../../../app/student.service';
 import { CoursesService } from '../../../app/courses.service';
@@ -12,7 +12,13 @@ import { StudentTableHeadingComponent } from '../../../components/StudentCompone
 import { StudentTableRowComponent } from '../../../components/StudentComponents/Table/Row/Row.component';
 import { Course } from '../../../interfaces/course.interface';
 import { AppButtonComponent } from '../../../components/App/Button/AppButton.component';
-import { AppButton } from '../../../interfaces/app.interface';
+import {
+  AppButton,
+  AppMessage,
+  AppMessageActions,
+  AppMessageType,
+} from '../../../interfaces/app.interface';
+import { AppMessageComponent } from '../../../components/App/Message/AppMessage.component';
 
 @Component({
   selector: 'student-overview',
@@ -24,6 +30,7 @@ import { AppButton } from '../../../interfaces/app.interface';
     StudentTableRowComponent,
     RouterLink,
     AppButtonComponent,
+    AppMessageComponent,
   ],
   templateUrl: './StudentOverview.component.html',
   styleUrl: './StudentOverview.component.css',
@@ -36,6 +43,7 @@ export class StudentOverviewComponent {
   pagination: StudentPagination | null = null;
   pageLimit: number = 0;
   headingCols: StudentTableHeading;
+  deleteStudentId: string = '';
 
   constructor(
     private studentService: StudentService,
@@ -46,10 +54,17 @@ export class StudentOverviewComponent {
     this.headingCols = this.studentService.buildTableHeading();
   }
 
+  @ViewChild('messageDialog', { static: false })
+  messageDialogEl: ElementRef | null = null;
+
   buttonOptions: AppButton = {
     buttonType: 'button',
     buttonText: 'Add new student',
     buttonClasses: [],
+  };
+  appMessageOptions: AppMessage = {
+    messageType: 'info',
+    messageText: '',
   };
 
   async ngOnInit(): Promise<void> {
@@ -79,12 +94,46 @@ export class StudentOverviewComponent {
   }
 
   async handleDeleteStudentEvent(id: string): Promise<void> {
-    console.log(id);
-    await this.studentService.deleteStudent(id);
-    this.getStudentsData();
+    this.deleteStudentId = id;
+    this.setAppMessageOptions(
+      'warning',
+      'Please confirm student delete',
+      'YesNo'
+    );
+    this.messageDialogEl?.nativeElement.showModal();
   }
 
   handleAddStudentClick(event: Event): void {
     this.router.navigate(['/add']);
+  }
+
+  async handleDialogMessageClickEvent(event: Event): Promise<void> {
+    const dataAction = (event.target as HTMLButtonElement)?.dataset['action'];
+    if (!dataAction) {
+      return;
+    }
+
+    switch (dataAction) {
+      case 'no':
+      case 'close':
+        this.deleteStudentId = '';
+        break;
+      case 'yes':
+        await this.studentService.deleteStudent(this.deleteStudentId);
+        this.getStudentsData();
+        break;
+    }
+
+    this.messageDialogEl?.nativeElement.close();
+  }
+
+  setAppMessageOptions(
+    type: AppMessageType,
+    text: string,
+    action?: AppMessageActions
+  ): void {
+    this.appMessageOptions.messageType = type;
+    this.appMessageOptions.messageText = text;
+    this.appMessageOptions.messageActions = action;
   }
 }

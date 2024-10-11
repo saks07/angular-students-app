@@ -1,3 +1,21 @@
-<div [class]="['app-message-container', messageOptions.messageType]">
-  <div class="app-message-wrapper">{{ messageOptions.messageText }}</div>
+<div [class]="['app-message-container', messageOptions().messageType]">
+  <div class="app-message-wrapper">{{ messageOptions().messageText }}</div>
+  <span
+    class="message-close-btn"
+    data-action="close"
+    (click)="onMessageButtonClick($event)"
+    >x</span
+  >
+  @if(handleMessageActionYesNo()){
+  <div class="buttons-container">
+    <app-button
+      [buttonOptions]="buttonYesOptions"
+      (clickEvent)="onMessageButtonClick($event)"
+    ></app-button>
+    <app-button
+      [buttonOptions]="buttonNoOptions"
+      (clickEvent)="onMessageButtonClick($event)"
+    ></app-button>
+  </div>
+  }
 </div>

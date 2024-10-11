@@ -1,16 +1,23 @@
 <div [class]="['table-row', oddRow()]">
-  <div class="td">{{ studentRow().firstName }}</div>
-  <div class="td">{{ studentRow().lastName }}</div>
-  <div class="td">{{ studentRow().email }}</div>
-  <div class="td">{{ mapCourses() }}</div>
-  <div class="td">
-    <app-link-button
-      [to]="linkButtonTo()"
-      [linkText]="'edit'"
-    ></app-link-button>
-    <app-button
-      [buttonOptions]="buttonOptions"
-      (clickEvent)="onDeleteStudent($event)"
-    ></app-button>
+  <div class="td td-fname">{{ studentRow().firstName }}</div>
+  <div class="td td-lname">{{ studentRow().lastName }}</div>
+  <div class="td td-email">{{ studentRow().email }}</div>
+  <div class="td td-courses">{{ mapCourses() }}</div>
+  <div class="td td-commands">
+    <details>
+      <summary>
+        <app-dots-button></app-dots-button>
+      </summary>
+      <div class="commands-dropdown">
+        <app-link-button
+          [to]="linkButtonTo()"
+          [linkText]="'edit'"
+        ></app-link-button>
+        <app-button
+          [buttonOptions]="buttonOptions"
+          (clickEvent)="onDeleteStudent($event)"
+        ></app-button>
+      </div>
+    </details>
   </div>
 </div>

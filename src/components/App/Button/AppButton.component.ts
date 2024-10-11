@@ -1,11 +1,4 @@
-import {
-  Component,
-  computed,
-  EventEmitter,
-  input,
-  output,
-  Signal,
-} from '@angular/core';
+import { Component, computed, input, output, Signal } from '@angular/core';
 import { AppButton } from '../../../interfaces/app.interface';
 
 @Component({
@@ -19,6 +12,7 @@ export class AppButtonComponent {
     buttonType: 'button',
     buttonText: '',
     buttonClasses: [],
+    buttonDataAction: '',
   });
 
   clickEvent = output<Event>();

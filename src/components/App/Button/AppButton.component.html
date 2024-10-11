@@ -2,6 +2,7 @@
   [type]="buttonOptions().buttonType"
   [id]="buttonOptions().buttonId"
   [class]="['app-button', buttonClasses()]"
+  [attr.data-action]="buttonOptions().buttonDataAction"
   (click)="onClick($event)"
 >
   {{ buttonOptions().buttonText }}

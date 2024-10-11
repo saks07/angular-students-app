@@ -30,4 +30,13 @@
     ></app-pagination>
     }
   </div>
+  <!-- message dialog -->
+  <dialog #messageDialog>
+    @if(appMessageOptions.messageText){
+    <app-message
+      [messageOptions]="appMessageOptions"
+      (messageButtonClickEvent)="handleDialogMessageClickEvent($event)"
+    ></app-message>
+    }
+  </dialog>
 </div>

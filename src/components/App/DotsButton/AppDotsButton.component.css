@@ -1,0 +1,45 @@
+.dots-button {
+  position: relative;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: var(--border-radius-full);
+  background-color: var(--bg-black-200);
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dots-button * {
+  pointer-events: none;
+}
+
+.dot {
+  position: relative;
+  height: 0.4rem;
+  width: 0.4rem;
+  background-color: var(--color-black);
+  border-radius: var(--border-radius-full);
+}
+
+.dot:before,
+.dot:after {
+  position: absolute;
+  content: "";
+  height: 0.4rem;
+  width: 0.4rem;
+  background-color: var(--color-black);
+  border-radius: var(--border-radius-full);
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+}
+
+.dot:before {
+  top: 8px;
+}
+
+.dot:after {
+  bottom: 8px;
+}

@@ -16,6 +16,7 @@ header .wrapper {
   margin: 0;
   padding-block: 1.25rem;
   color: var(--color-white, #fff);
+  text-decoration: none;
 }
 
 footer {

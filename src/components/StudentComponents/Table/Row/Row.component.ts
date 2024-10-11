@@ -3,13 +3,19 @@ import { Student } from '../../../../interfaces/student.interface';
 import { RouterLink } from '@angular/router';
 import { AppLinkButtonComponent } from '../../../App/LinkButton/AppLinkButton.component';
 import { AppButtonComponent } from '../../../App/Button/AppButton.component';
-import { AppButton, AppLinkButton } from '../../../../interfaces/app.interface';
+import { AppButton } from '../../../../interfaces/app.interface';
 import { Course } from '../../../../interfaces/course.interface';
+import { AppDotsButtonComponent } from '../../../App/DotsButton/AppDotsButton.component';
 
 @Component({
   selector: 'student-table-row',
   standalone: true,
-  imports: [RouterLink, AppLinkButtonComponent, AppButtonComponent],
+  imports: [
+    RouterLink,
+    AppLinkButtonComponent,
+    AppButtonComponent,
+    AppDotsButtonComponent,
+  ],
   templateUrl: './Row.component.html',
   styleUrl: './Row.component.css',
 })

@@ -1,3 +1,10 @@
 .students-actions-container {
   margin-block: 4rem;
 }
+
+dialog {
+  padding: 0;
+  outline: none;
+  border: 0;
+  border-radius: var(--border-radius);
+}

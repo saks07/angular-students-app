@@ -80,6 +80,10 @@ export class StudentService {
 
   async getStudent(id: string): Promise<Student | null> {
     try {
+      if (!id) {
+        throw new Error('Missing student id');
+      }
+
       const response = await fetch(`${this.baseUrl}/${id}`);
       const data = await response.json();
       return data;
@@ -105,6 +109,10 @@ export class StudentService {
 
   async updateStudent(id: string, body: Student): Promise<Student | null> {
     try {
+      if (!id) {
+        throw new Error('Missing student id');
+      }
+
       const response = await fetch(`${this.baseUrl}/${id}`, {
         method: 'PUT',
         body: JSON.stringify(body),
@@ -119,6 +127,10 @@ export class StudentService {
 
   async deleteStudent(id: string): Promise<Student | null> {
     try {
+      if (!id) {
+        throw new Error('Missing student id');
+      }
+
       const response = await fetch(`${this.baseUrl}/${id}`, {
         method: 'DELETE',
       });

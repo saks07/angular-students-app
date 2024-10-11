@@ -1,17 +1,21 @@
-type MessageType = 'success' | 'error' | 'warning' | 'info';
+export type AppMessageType = 'success' | 'error' | 'warning' | 'info';
 
-type ButtonType = 'button' | 'submit';
+export type AppMessageActions = 'YesNo';
+
+type AppButtonType = 'button' | 'submit';
 
 export interface AppMessage {
-  messageType: MessageType;
+  messageType: AppMessageType;
   messageText: string;
+  messageActions?: AppMessageActions;
 }
 
 export interface AppButton {
   buttonId?: string;
-  buttonType: ButtonType;
+  buttonType: AppButtonType;
   buttonText: string;
   buttonClasses?: string[];
+  buttonDataAction?: string;
 }
 
 export interface AppLinkButton {

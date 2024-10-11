@@ -1,8 +1,20 @@
 .app-message-container {
   position: relative;
-  padding: 0.8rem 1.6rem;
+  padding: 2.4rem 2.8rem;
   border-radius: 4px;
   text-align: center;
+}
+
+.message-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--color-white);
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  border-radius: 0 0 0 var(--border-radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .info {
@@ -11,10 +23,18 @@
   color: var(--message-info-color);
 }
 
+.info .message-close-btn {
+  background-color: var(--message-info-border-color);
+}
+
 .success {
   border: 2px solid var(--message-success-border-color);
   background-color: var(--message-success-bg);
   color: var(--message-success-color);
+}
+
+.success .message-close-btn {
+  background-color: var(--message-success-border-color);
 }
 
 .warning {
@@ -23,8 +43,23 @@
   color: var(--message-warning-color);
 }
 
+.warning .message-close-btn {
+  background-color: var(--message-warning-border-color);
+}
+
 .error {
   border: 2px solid var(--message-error-border-color);
   background-color: var(--message-error-bg);
   color: var(--message-error-color);
+}
+
+.error .message-close-btn {
+  background-color: var(--message-error-border-color);
+}
+
+.buttons-container {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
