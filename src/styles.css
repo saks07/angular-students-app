@@ -1,1 +1,98 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary-color: #86198f;
+
+  --background-color-white: #fff;
+  --background-color-lightGray: #f5f5f5;
+
+  --color-white: #fff;
+  --color-black: #000;
+  --color-transparent: rgba(0, 0, 0, 0);
+
+  --border-color: #e5e5e5;
+  --border-radius: 0.4rem;
+  --border-radius-small: 0.2rem;
+
+  --message-success-bg: #dcfce7;
+  --message-success-color: #15803d;
+  --message-success-border-color: #16a34a;
+
+  --message-error-bg: #fee2e2;
+  --message-error-color: #b91c1c;
+  --message-error-border-color: #dc2626;
+
+  --message-warning-bg: #fef3c7;
+  --message-warning-color: #b45309;
+  --message-warning-border-color: #d97706;
+
+  --message-info-bg: #e0f2fe;
+  --message-info-color: #0369a1;
+  --message-info-border-color: #0284c7;
+
+  --table-th-padding: 1.6rem 0.8rem;
+  --table-td-padding: 1.6rem 0.8rem;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.6rem;
+  background-color: var(--background-color-lightGray, #f5f5f5);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.container-mbl {
+  margin-block: 4rem;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  padding-inline: 1.25rem;
+  margin: auto;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-input {
+  position: relative;
+  width: 100%;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  outline: none;
+  background-color: var(--background-color-white, #fff);
+}
+
+.app-input[readonly] {
+  background-color: var(--background-color-lightGray, #f5f5f5);
+}
+
+.app-input:focus {
+  border-color: var(--primary-color);
+}
+
+.app-input[readonly]:focus {
+  border-color: var(--border-color);
+}

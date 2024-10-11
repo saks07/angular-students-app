@@ -1,0 +1,197 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "firstName": "Student 1",
+      "lastName": "Student 1",
+      "email": "student1@mail.com",
+      "courses": [2, 3, 1]
+    },
+    {
+      "firstName": "Student 2",
+      "lastName": "Student 2",
+      "email": "student2@mail.com",
+      "courses": [1, 3],
+      "id": "2"
+    },
+    {
+      "id": "4",
+      "firstName": "Student 4",
+      "lastName": "Student 4",
+      "email": "student4@mail.com",
+      "courses": [2, 1]
+    },
+    {
+      "id": "5",
+      "firstName": "Student 5",
+      "lastName": "Student 5",
+      "email": "student5@mail.com",
+      "courses": [2, 3]
+    },
+    {
+      "id": "6",
+      "firstName": "Student 6",
+      "lastName": "Student 6",
+      "email": "student6@mail.com",
+      "courses": [2, 4]
+    },
+    {
+      "id": "7",
+      "firstName": "Student 7",
+      "lastName": "Student 7",
+      "email": "student7@mail.com",
+      "courses": [3, 1]
+    },
+    {
+      "id": "8",
+      "firstName": "Student 8",
+      "lastName": "Student 8",
+      "email": "student8@mail.com",
+      "courses": [3, 2]
+    },
+    {
+      "id": "9",
+      "firstName": "Student 9",
+      "lastName": "Student 9",
+      "email": "student9@mail.com",
+      "courses": [3, 4]
+    },
+    {
+      "id": "10",
+      "firstName": "Student 10",
+      "lastName": "Student 10",
+      "email": "student10@mail.com",
+      "courses": [1]
+    },
+    {
+      "id": "11",
+      "firstName": "Student 11",
+      "lastName": "Student 11",
+      "email": "student11@mail.com",
+      "courses": [4, 2]
+    },
+    {
+      "id": "12",
+      "firstName": "Student 12",
+      "lastName": "Student 12",
+      "email": "student12@mail.com",
+      "courses": [4, 3]
+    },
+    {
+      "id": "13",
+      "firstName": "Student 13",
+      "lastName": "Student 13",
+      "email": "student13@mail.com",
+      "courses": [1, 2]
+    },
+    {
+      "id": "14",
+      "firstName": "Student 14",
+      "lastName": "Student 14",
+      "email": "student14@mail.com",
+      "courses": [1, 3]
+    },
+    {
+      "id": "15",
+      "firstName": "Student 15",
+      "lastName": "Student 15",
+      "email": "student15@mail.com",
+      "courses": [1, 4]
+    },
+    {
+      "id": "16",
+      "firstName": "Student 16",
+      "lastName": "Student 16",
+      "email": "student16@mail.com",
+      "courses": [2, 1]
+    },
+    {
+      "id": "17",
+      "firstName": "Student 17",
+      "lastName": "Student 17",
+      "email": "student17@mail.com",
+      "courses": [2, 3]
+    },
+    {
+      "id": "18",
+      "firstName": "Student 18",
+      "lastName": "Student 18",
+      "email": "student18@mail.com",
+      "courses": [2, 4]
+    },
+    {
+      "id": "19",
+      "firstName": "Student 19",
+      "lastName": "Student 19",
+      "email": "student19@mail.com",
+      "courses": [3, 1]
+    },
+    {
+      "id": "20",
+      "firstName": "Student 20",
+      "lastName": "Student 20",
+      "email": "student20@mail.com",
+      "courses": [3, 2]
+    },
+    {
+      "id": "21",
+      "firstName": "Student 21",
+      "lastName": "Student 21",
+      "email": "student21@mail.com",
+      "courses": [3, 4]
+    },
+    {
+      "id": "22",
+      "firstName": "Student 22",
+      "lastName": "Student 22",
+      "email": "student220@mail.com",
+      "courses": [4, 1]
+    },
+    {
+      "id": "23",
+      "firstName": "Student 23",
+      "lastName": "Student 23",
+      "email": "student23@mail.com",
+      "courses": [4, 2]
+    },
+    {
+      "id": "24",
+      "firstName": "Student 24",
+      "lastName": "Student 24",
+      "email": "student24@mail.com",
+      "courses": [4, 3]
+    },
+    {
+      "id": "25",
+      "firstName": "Student 25",
+      "lastName": "Student 25",
+      "email": "student25@mail.com",
+      "courses": ["4", "2"]
+    },
+    {
+      "id": "26",
+      "firstName": "Student 26",
+      "lastName": "Student 26",
+      "email": "student26@mail.com",
+      "courses": [1, 2]
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "name": "math"
+    },
+    {
+      "id": "2",
+      "name": "phisycs"
+    },
+    {
+      "id": "3",
+      "name": "history"
+    },
+    {
+      "id": "4",
+      "name": "geography"
+    }
+  ]
+}

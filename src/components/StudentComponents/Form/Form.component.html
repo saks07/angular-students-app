@@ -1,0 +1,65 @@
+<form
+  [formGroup]="studentForm"
+  action=""
+  method=""
+  (ngSubmit)="onStudentSubmit()"
+  [class]="['app-form', formClass()]"
+>
+  <h2 class="form-title">{{ formTitle() }}</h2>
+  <div class="form-input-container">
+    <label class="form-label" for="first-name">first name:</label>
+    <input
+      type="text"
+      formControlName="firstName"
+      [readonly]="inputReadonly()"
+      class="app-input form-input"
+    />
+  </div>
+  <div class="form-input-container">
+    <label class="form-label" for="last-name">last name:</label>
+    <input
+      type="text"
+      formControlName="lastName"
+      [readonly]="inputReadonly()"
+      class="app-input form-input"
+    />
+  </div>
+  <div class="form-input-container">
+    <label class="form-label" for="email">email address:</label>
+    <input
+      type="email"
+      formControlName="email"
+      [readonly]="inputReadonly()"
+      class="app-input form-input"
+    />
+  </div>
+  <div class="form-input-container">
+    <label class="form-label" for="courses">courses:</label>
+    <div class="courses-list">
+      @for(item of coursesDisplay; track item.id) {
+      <label class="course-label" [for]="item.name">
+        <input
+          type="checkbox"
+          [value]="item.id"
+          [checked]="item.active"
+          (change)="onCourseChange($event)"
+          class="form-input form-checkbox"
+        />
+        {{ item.name }}
+      </label>
+      }
+    </div>
+  </div>
+  @if(messageOptions.messageText) {
+  <app-message [messageOptions]="messageOptions"></app-message>
+  }
+  <div class="submit-container">
+    <app-button [buttonOptions]="buttonOptions"></app-button>
+  </div>
+  <div class="back-btn-container">
+    <app-link-button
+      [to]="linkButtonOptions.to"
+      [linkText]="linkButtonOptions.linkText"
+    ></app-link-button>
+  </div>
+</form>

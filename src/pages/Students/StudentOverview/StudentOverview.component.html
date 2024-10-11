@@ -1,0 +1,33 @@
+<div class="container container-mbl student-overview">
+  <div class="wrapper">
+    <div class="students-actions-container">
+      <app-button
+        [buttonOptions]="buttonOptions"
+        (clickEvent)="handleAddStudentClick($event)"
+      ></app-button>
+    </div>
+    <div class="students-table-container">
+      <student-table-heading
+        [headingCols]="headingCols"
+      ></student-table-heading>
+      @for(student of students; track student.id) {
+      <student-table-row
+        [studentRow]="student"
+        [rowIndex]="$index"
+        [courses]="courses"
+        (deleteStudentEvent)="handleDeleteStudentEvent($event)"
+      ></student-table-row>
+      } @empty {
+      <span>Empty list of students</span>
+      }
+    </div>
+    @if (pagination) {
+    <app-pagination
+      [paginationData]="pagination"
+      [pageLimit]="pageLimit"
+      (pageClickEvent)="handlePageClick($event)"
+      (pageNavClickEvent)="handlePageClick($event)"
+    ></app-pagination>
+    }
+  </div>
+</div>
