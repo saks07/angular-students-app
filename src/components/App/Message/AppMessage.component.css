@@ -1,0 +1,30 @@
+.app-message-container {
+  position: relative;
+  padding: 0.8rem 1.6rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.info {
+  border: 2px solid var(--message-info-border-color);
+  background-color: var(--message-info-bg);
+  color: var(--message-info-color);
+}
+
+.success {
+  border: 2px solid var(--message-success-border-color);
+  background-color: var(--message-success-bg);
+  color: var(--message-success-color);
+}
+
+.warning {
+  border: 2px solid var(--message-warning-border-color);
+  background-color: var(--message-warning-bg);
+  color: var(--message-warning-color);
+}
+
+.error {
+  border: 2px solid var(--message-error-border-color);
+  background-color: var(--message-error-bg);
+  color: var(--message-error-color);
+}

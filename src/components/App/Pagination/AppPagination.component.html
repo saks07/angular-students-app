@@ -1,0 +1,27 @@
+<div class="container pagination-container">
+  <div class="wrapper">
+    <div class="counters">{{ counterText() }}</div>
+    <div class="pagination">
+      <a
+        class="pagination-btn prev-btn"
+        [class.disabled]="!prevBtn()"
+        (click)="pageNavClick($event, 'prev')"
+        >prev</a
+      >
+      @for(page of pages; track page) {
+      <a
+        class="page-item"
+        [class.active]="currentPage === page"
+        (click)="onPageClick($event, page)"
+        >{{ page }}</a
+      >
+      }
+      <a
+        class="pagination-btn next-btn"
+        [class.disabled]="!nextBtn()"
+        (click)="pageNavClick($event, 'next')"
+        >next</a
+      >
+    </div>
+  </div>
+</div>

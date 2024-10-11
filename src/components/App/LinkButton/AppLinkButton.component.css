@@ -1,0 +1,12 @@
+.app-link-button {
+  position: relative;
+  padding: 0.8rem 1.6rem;
+  color: var(--primary-color);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.color-white {
+  color: var(--color-white, #fff);
+}

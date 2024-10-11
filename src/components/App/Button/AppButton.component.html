@@ -1,0 +1,8 @@
+<button
+  [type]="buttonOptions().buttonType"
+  [id]="buttonOptions().buttonId"
+  [class]="['app-button', buttonClasses()]"
+  (click)="onClick($event)"
+>
+  {{ buttonOptions().buttonText }}
+</button>

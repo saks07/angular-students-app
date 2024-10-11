@@ -1,0 +1,28 @@
+header {
+  position: relative;
+  width: 100%;
+  background-color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+header .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-title {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding-block: 1.25rem;
+  color: var(--color-white, #fff);
+}
+
+footer {
+  margin-top: 2rem;
+}
+
+footer .wrapper {
+  border-top: 1px solid var(--border-color);
+  padding-block: 1.25rem;
+}
