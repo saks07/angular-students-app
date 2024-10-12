@@ -14,6 +14,9 @@
       [readonly]="inputReadonly()"
       class="app-input form-input"
     />
+    @if(formSubmitted && checkRequiredInput('firstName')) {
+    <div class="input-error required">Please enter your first name</div>
+    }
   </div>
   <div class="form-input-container">
     <label class="form-label" for="last-name">last name:</label>
@@ -23,6 +26,9 @@
       [readonly]="inputReadonly()"
       class="app-input form-input"
     />
+    @if(formSubmitted && checkRequiredInput('lastName')) {
+    <div class="input-error required">Please enter your last name</div>
+    }
   </div>
   <div class="form-input-container">
     <label class="form-label" for="email">email address:</label>
@@ -32,6 +38,11 @@
       [readonly]="inputReadonly()"
       class="app-input form-input"
     />
+    @if(formSubmitted && checkRequiredInput('email')) {
+    <div class="input-error required">Please enter your email name</div>
+    } @else if(checkEmailInput()) {
+    <div class="input-error email">Please enter a valid email</div>
+    }
   </div>
   <div class="form-input-container">
     <label class="form-label" for="courses">courses:</label>

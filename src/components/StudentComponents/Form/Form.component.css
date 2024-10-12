@@ -29,26 +29,14 @@
   font-weight: 700;
 }
 
-.form-input {
-  position: relative;
-  width: 100%;
-  padding: 0.8rem 1.6rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  outline: none;
-  background-color: var(--background-color-white, #fff);
+.ng-submitted .form-input.ng-invalid,
+.form-input.ng-touched.ng-invalid {
+  border-color: red;
 }
 
-.form-input[readonly] {
-  background-color: var(--background-color-lightGray, #f5f5f5);
-}
-
-.form-input:focus {
-  border-color: var(--primary-color);
-}
-
-.form-input[readonly]:focus {
-  border-color: var(--border-color);
+.input-error {
+  color: red;
+  font-size: 1.2rem;
 }
 
 .courses-list {

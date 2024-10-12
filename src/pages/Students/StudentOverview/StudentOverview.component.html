@@ -21,7 +21,7 @@
       <span>Empty list of students</span>
       }
     </div>
-    @if (pagination) {
+    @if (pagination && students.length) {
     <app-pagination
       [paginationData]="pagination"
       [pageLimit]="pageLimit"

@@ -59,6 +59,7 @@ export class StudentFormComponent {
   courses: Course[] = [];
   coursesDisplay: CourseDisplay[] = [];
   coursesSubmit: Set<number> = new Set();
+  formSubmitted: boolean = false;
 
   // Form data
   studentForm: FormGroup = new FormGroup({
@@ -115,6 +116,17 @@ export class StudentFormComponent {
     }
   }
 
+  checkRequiredInput(studentFormControlKey: string): boolean {
+    return (
+      this.studentForm.controls[studentFormControlKey]?.errors?.['required'] ??
+      false
+    );
+  }
+
+  checkEmailInput(): boolean {
+    return this.studentForm.controls['email'].errors?.['email'] ?? false;
+  }
+
   setButtonText(): void {
     this.buttonOptions.buttonText = this.formActionType();
   }
@@ -156,19 +168,27 @@ export class StudentFormComponent {
   }
 
   async onStudentSubmit(): Promise<void> {
+    this.formSubmitted = true;
+
+    if (this.studentForm.invalid) {
+      return;
+    }
+
     // Add courses to form data
     Object.assign(this.studentForm.value, {
       courses: [...new Set(this.coursesSubmit)],
     });
 
-    // Create student
     if (this.requestMethod() === 'POST') {
-      this.createStudent();
-      return;
+      // Create student
+      await this.createStudent();
+    } else {
+      // Update student
+      await this.updateStudent();
     }
 
-    // Update student
-    this.updateStudent();
+    this.formSubmitted = false;
+    this.studentForm.reset();
   }
 
   async createStudent(): Promise<void> {
@@ -176,10 +196,6 @@ export class StudentFormComponent {
     if (studentCount === -1) {
       return;
     }
-
-    console.log(studentCount);
-
-    return;
 
     await Object.assign(this.studentForm.value, {
       id: studentCount.toString(),
