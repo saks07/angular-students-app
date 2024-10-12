@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Course, CourseDisplay } from '../interfaces/course.interface';
 import { Student } from '../interfaces/student.interface';
+import { ICoursesService } from '../interfaces/service.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CoursesService {
+export class CoursesService implements ICoursesService {
   private baseUrl: string = 'http://localhost:3000/courses';
 
   async getCourses(): Promise<Course[]> {

@@ -5,11 +5,12 @@ import {
   StudentsPagination,
   StudentTableHeading,
 } from '../interfaces/student.interface';
+import { IStudentService } from '../interfaces/service.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class StudentService {
+export class StudentService implements IStudentService {
   private baseUrl: string = 'http://localhost:3000/students';
   private LIMIT = 20;
 
