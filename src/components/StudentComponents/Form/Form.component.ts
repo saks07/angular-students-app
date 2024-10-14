@@ -4,6 +4,7 @@ import {
   FormGroup,
   FormControl,
   Validators,
+  FormArray,
 } from '@angular/forms';
 import { Student } from '../../../interfaces/student.interface';
 import { ActivatedRoute } from '@angular/router';
@@ -58,7 +59,6 @@ export class StudentFormComponent {
   studentId: string | null = null;
   courses: Course[] = [];
   coursesDisplay: CourseDisplay[] = [];
-  coursesSubmit: Set<number> = new Set();
   formSubmitted: boolean = false;
 
   // Form data
@@ -67,8 +67,12 @@ export class StudentFormComponent {
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    courses: new FormControl([]),
+    courses: new FormArray([], Validators.required),
   });
+
+  get formCourses(): FormArray {
+    return this.studentForm.controls['courses'] as FormArray;
+  }
 
   // Computed
   inputReadonly: Signal<boolean> = computed(
@@ -110,9 +114,13 @@ export class StudentFormComponent {
 
     const courseId = Number(checkbox.value);
     if (checkbox.checked) {
-      this.coursesSubmit.add(courseId);
+      this.formCourses.push(new FormControl(courseId));
     } else {
-      this.coursesSubmit.delete(courseId);
+      const findIndex = this.formCourses.getRawValue().indexOf(courseId);
+      if (findIndex === -1) {
+        return;
+      }
+      this.formCourses.removeAt(findIndex);
     }
   }
 
@@ -155,7 +163,6 @@ export class StudentFormComponent {
       studentData,
       this.courses
     );
-    this.coursesSubmit = new Set(studentData.courses);
   }
 
   async getStudents(): Promise<number> {
@@ -170,14 +177,16 @@ export class StudentFormComponent {
   async onStudentSubmit(): Promise<void> {
     this.formSubmitted = true;
 
-    if (this.studentForm.invalid) {
+    // Reset form message
+    this.setMessageOptions({
+      messageType: 'info',
+      messageText: '',
+    });
+
+    // VALIDATION SKIPPED BECAUSE OF ANGULAR FORM MODULE VALIDATION ISSUE
+    if (!this.studentForm.valid) {
       return;
     }
-
-    // Add courses to form data
-    Object.assign(this.studentForm.value, {
-      courses: [...new Set(this.coursesSubmit)],
-    });
 
     if (this.requestMethod() === 'POST') {
       // Create student
@@ -186,9 +195,6 @@ export class StudentFormComponent {
       // Update student
       await this.updateStudent();
     }
-
-    this.formSubmitted = false;
-    this.studentForm.reset();
   }
 
   async createStudent(): Promise<void> {
@@ -197,9 +203,8 @@ export class StudentFormComponent {
       return;
     }
 
-    await Object.assign(this.studentForm.value, {
-      id: studentCount.toString(),
-    });
+    this.studentForm.controls['id'].setValue(studentCount.toString());
+
     const result = await this.studentService.createStudent(
       this.studentForm.value
     );
@@ -207,8 +212,10 @@ export class StudentFormComponent {
     if (result) {
       this.setMessageOptions({
         messageType: 'success',
-        messageText: `Student was successfully saved`,
+        messageText: 'Student was successfully saved',
       });
+
+      this.formSubmitted = false;
     } else {
       this.setMessageOptions({
         messageType: 'error',
@@ -232,6 +239,8 @@ export class StudentFormComponent {
         messageType: 'success',
         messageText: `Student was successfully updated`,
       });
+
+      this.formSubmitted = false;
     } else {
       this.setMessageOptions({
         messageType: 'error',
@@ -246,7 +255,13 @@ export class StudentFormComponent {
       this.studentForm.controls['firstName'].setValue(data.firstName);
       this.studentForm.controls['lastName'].setValue(data.lastName);
       this.studentForm.controls['email'].setValue(data.email);
-      this.studentForm.controls['courses'].setValue(data.courses);
+      if (data.courses.length) {
+        data.courses.forEach((id: number) => {
+          this.formCourses.push(new FormControl(id));
+        });
+      } else {
+        this.formCourses.clear();
+      }
       return;
     }
 
@@ -254,7 +269,7 @@ export class StudentFormComponent {
     this.studentForm.controls['firstName'].setValue('');
     this.studentForm.controls['lastName'].setValue('');
     this.studentForm.controls['email'].setValue('');
-    this.studentForm.controls['courses'].setValue([]);
+    this.formCourses.clear();
   }
 
   setMessageOptions(options: AppMessage): void {

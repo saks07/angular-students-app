@@ -1,8 +1,12 @@
 .app-message-container {
   position: relative;
-  padding: 2.4rem 2.8rem;
+  padding: 1.6rem;
   border-radius: 4px;
   text-align: center;
+}
+
+.app-message-container.message-actions {
+  padding: 2.4rem 2.8rem;
 }
 
 .message-close-btn {

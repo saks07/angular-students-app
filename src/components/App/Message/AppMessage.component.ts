@@ -31,6 +31,10 @@ export class AppMessageComponent {
 
   messageButtonClickEvent = output<Event>();
 
+  hasMesageAction: Signal<string> = computed(() =>
+    this.messageOptions().messageActions ? 'message-actions' : ''
+  );
+
   handleMessageActionYesNo: Signal<boolean> = computed(
     () => this.messageOptions().messageActions === 'YesNo'
   );

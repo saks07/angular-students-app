@@ -60,6 +60,9 @@
       </label>
       }
     </div>
+    @if(formSubmitted && !formCourses.length) {
+    <div class="input-error required">Please select at least one course</div>
+    }
   </div>
   @if(messageOptions.messageText) {
   <app-message [messageOptions]="messageOptions"></app-message>
